@@ -1,0 +1,27 @@
+<dialog #addUserDialog id="addUserDialog" class="modal">
+  <div class="modal-box">
+    <h1 class="font-bold">Add user for todo: {{ todoTitle }}</h1>
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text">Select a users...</span>
+      </div>
+      <select class="select select-bordered" [formControl]="usernameInputControl">
+        <option *ngFor="let username of filteredUsersForTodo$ | async" [value]="username">
+          {{username}}
+        <option>
+      </select>
+    </label>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Cancel</button>
+        <button class="btn btn-primary" [disabled]="!usernameInputControl.dirty" (click)="save()">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- the form with 'modal-backdrop' class, covers the screen so we can close the modal when clicked outside -->
+  <form method="dialog" class="modal-backdrop">
+    <button class="cursor-default">close</button>
+  </form>
+</dialog>

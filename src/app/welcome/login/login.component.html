@@ -1,0 +1,35 @@
+<background />
+<div class="form-container">
+  <div class="form bg-base-300">
+    <div class="header">{{ getHeader() }}</div>
+    <div class="p-6 gap-4 flex flex-col" [formGroup]="loginFormGroup">
+      <my-input
+        [costumeFormControl]="usernameControl"
+        [placeholder]="'Email or Username'"
+        type="text"
+      />
+      <my-input
+        [costumeFormControl]="pwdControl"
+        [placeholder]="'Password'"
+        [minCharacters]="10"
+        type="password"
+      />
+      <my-input
+        *ngIf="isSignUpPage()"
+        [costumeFormControl]="confirmPwdControl"
+        [placeholder]="'Confirm password'"
+        [minCharacters]="10"
+        type="password"
+      />
+      <div *ngIf="isLoginPage()" class="flex items-center gap-2">
+        <input class="checkbox" [formControl]="rememberMeControl" type="checkbox" id="checkbox">
+        <label for="checkbox" class="cursor-pointer text-slate-200">Remember me</label>
+      </div>
+      <button class="btn btn-primary text-white font-bold" (click)="submit()">Submit</button>
+      @if(isLoginPage()) {
+        <a class="text-center font-semibold text-sm text-[#1e88e5]" href="forgot">Forgot password?</a>
+        <p class="font-light flex items-center justify-center text-sm gap-1">Don't have an account?<a class="font-semibold text-[#1e88e5]" href="signup">Sign up</a></p>
+      }
+    </div>
+  </div>
+</div>

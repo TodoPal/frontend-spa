@@ -1,0 +1,35 @@
+<div class="navbar bg-base-300">
+  <span routerLink="/todos" class="btn btn-ghost">TodoPal</span>
+
+  <span class="flex-auto"></span>
+
+  <div class="dropdown dropdown-bottom dropdown-end">
+    <button class="btn btn-circle btn-ghost w-8 h-8 min-h-8">
+      <ng-icon [name]="isNewNotification ? 'heroBellAlertSolid' : 'heroBellSolid'"></ng-icon>
+    </button>
+
+    <ul class="dropdown-content z-[1] bg-base-200 w-44 p-2 rounded-box">
+      @for (notification of notifications$ | async; track notification.id) {
+        <button class="btn btn-ghost" (click)="navigateToTodoPage(notification.todoId)">{{ notification.text }}</button>
+      } @empty {
+        <span class="block w-max">No notifications here.</span>}
+    </ul>
+  </div>
+
+  <div class="dropdown dropdown-bottom dropdown-end">
+    <button class="btn btn-ghost p-1 h-8 min-h-8">
+      {{ currentUser$ | async }}
+      <ng-icon name="heroChevronDown"></ng-icon>
+    </button>
+
+    <ul class="dropdown-content z-[1] menu shadow rounded-box bg-base-200 p-2 w-28">
+      <li [routerLink]="'/profile/' + (currentUser$ | async)"><a>Profile</a></li>
+      <li (mousedown)="logout()"><a>Log out</a></li>
+    </ul>
+  </div>
+
+  <img src="https://api.dicebear.com/6.x/thumbs/svg?seed={{(currentUser$ | async)}}&size=20"
+       alt="user avatar"
+       class="cursor-pointer"
+       [routerLink]="'/profile/' + (currentUser$ | async)">
+</div>

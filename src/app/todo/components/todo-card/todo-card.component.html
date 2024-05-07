@@ -1,0 +1,33 @@
+<div class="card bg-primary-content">
+  <div class="card-body">
+    <h1 class="card-title w-fit link-hover cursor-pointer" (click)="navigateToTodoPage(todo?.id)">{{ todo?.title }}</h1>
+    <h2 >Edited: {{ todo?.edited }}</h2>
+
+    <p class="py-2">{{ todo?.text }}</p>
+    
+    <p>
+      Assigned users:
+      @for (user of todo?.users; track todo?.id) {
+        <div class="badge badge-outline badge-primary gap-2">
+          {{ user }}
+          <ng-icon class="cursor-pointer" name="heroXMark" (click)="removeUser(todo?.id, user)" ></ng-icon>
+        </div>
+      }
+    </p>
+
+    <div class="card-actions justify-end">
+      <button class="btn btn-circle btn-outline btn-secondary">
+        <ng-icon name="heroPencil" size="1.5em" (click)="editTodoDialog.openForEdit(todo)"></ng-icon>
+      </button>
+      <button class="btn btn-circle btn-outline btn-secondary">
+        <ng-icon name="heroUserPlus" size="1.5em" (click)="addUserDialog.open()"></ng-icon>
+      </button>
+      <button class="btn btn-circle btn-outline btn-accent">
+        <ng-icon name="heroTrash" size="1.5em" (click)="deleteTodo(todo?.id)"></ng-icon>
+      </button>
+    </div>
+  </div>
+</div>
+        
+<app-todo-dialog #editTodoDialog (todoToSave)="saveTodo($event)"></app-todo-dialog>
+<app-add-user-for-todo-dialog #addUserDialog (usernameToAdd)="addUser($event)" [todoId]="todo?.id" [todoTitle]="todo?.title"></app-add-user-for-todo-dialog>
