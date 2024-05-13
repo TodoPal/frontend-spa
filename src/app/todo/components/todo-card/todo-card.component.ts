@@ -10,7 +10,7 @@ import { heroPencil, heroTrash, heroUserPlus, heroXMark } from '@ng-icons/heroic
 @Component({
   selector: 'todo-card',
   templateUrl: './todo-card.component.html',
-  viewProviders: [ 
+  viewProviders: [
     provideIcons({ heroXMark, heroPencil, heroUserPlus, heroTrash })
   ]
 })
@@ -28,7 +28,7 @@ export class TodoCardComponent {
     private router: Router
   ) {}
 
-  saveTodo(result: { title: string; text: string; }) {
+  saveTodo(result: { title: string; text: string; }): void {
     this.store.dispatch(editTodo({
       id: this.todo?.id ?? '',
       title: result.title,

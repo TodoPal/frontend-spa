@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user-for-todo-dialog',
-  templateUrl: './add-user-for-todo-dialog.component.html',
+  templateUrl: './add-user-for-todo-dialog.component.html'
 })
 export class AddUserForTodoDialog {
   @ViewChild('addUserDialog') dialog!: ElementRef<HTMLDialogElement>;
@@ -27,8 +27,8 @@ export class AddUserForTodoDialog {
     this.store.dispatch(getUsers({ todoId: this.todoId }));
     this.dialog.nativeElement.showModal();
   }
-  
-  save() {
+
+  save(): void {
     this.usernameToAdd.emit(this.usernameInputControl.value);
   }
 }
