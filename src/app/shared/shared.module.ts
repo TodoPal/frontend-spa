@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterLink } from '@angular/router';
 import { NgIconsModule } from '@ng-icons/core';
-import { heroEye, heroEyeSlash, heroChevronDown } from '@ng-icons/heroicons/outline';
+import { heroEye, heroEyeSlash } from '@ng-icons/heroicons/outline';
 import { heroBellSolid, heroBellAlertSolid } from '@ng-icons/heroicons/solid';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { heroBellSolid, heroBellAlertSolid } from '@ng-icons/heroicons/solid';
     ReactiveFormsModule,
     CommonModule,
     RouterLink,
-    NgIconsModule.withIcons({ heroEye, heroEyeSlash, heroChevronDown, heroBellSolid, heroBellAlertSolid })
+    NgIconsModule.withIcons({ heroEye, heroEyeSlash, heroBellSolid, heroBellAlertSolid })
   ]
 })
 export class SharedModule { }
