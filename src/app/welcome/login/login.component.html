@@ -27,8 +27,8 @@
       </div>
       <button class="btn btn-primary text-white font-bold" (click)="submit()">Submit</button>
       @if(isLoginPage()) {
-        <a class="text-center font-semibold text-sm text-[#1e88e5]" href="forgot">Forgot password?</a>
-        <p class="font-light flex items-center justify-center text-sm gap-1">Don't have an account?<a class="font-semibold text-[#1e88e5]" href="signup">Sign up</a></p>
+        <a class="text-center font-semibold text-sm text-[#1e88e5]" routerLink="forgot">Forgot password?</a>
+        <p class="font-light flex items-center justify-center text-sm gap-1">Don't have an account?<a class="font-semibold text-[#1e88e5]" routerLink="signup">Sign up</a></p>
       }
     </div>
   </div>
